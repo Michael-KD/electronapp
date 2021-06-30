@@ -1,0 +1,3 @@
+Test Electron App
+- Weather Data
+- CPU and Ram Data
