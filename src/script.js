@@ -10,9 +10,7 @@ ipcRenderer.on('total-mem',(event,data) => {
     document.getElementById('total-mem').innerHTML = data.toFixed(2);
 });
 
-// ipcRenderer.on('cputemp',(event,data) => {
-//   console.log(data);
-// });
+
 window.$ = window.jQuery = require('jquery');
 
 var currentWeather;
@@ -26,6 +24,11 @@ var lon;
 var dailyUrl;
 var userip;
 var coord;
+let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
+
+if (darkMode == true) {
+  document.body.classList.toggle("dark-theme");
+}
 
 $.ajax({
   url: "https://api.ipify.org?format=json",
@@ -36,14 +39,6 @@ $.ajax({
   }
 });
 
-// fetch("https://api.ipify.org?format=json")
-// .then(function(response) {
-//   return response.json();
-// })
-// .then(function(data) {
-//   userip = data.ip;
-//   console.log(userip);
-// })
 
 function getUserIPandCoords() {
 var ipurl = "https://ipinfo.io/"+ userip +"/json?token=dc96dbbe2c952c"
@@ -60,7 +55,6 @@ fetch(ipurl)
     lon = coord.split(',')[1];
   })
 }
-// userip = "24.130.249.158";
 
 function displayWeatherData() {
   $(".weekly").html('');
@@ -112,3 +106,20 @@ setTimeout(displayWeatherData, 300);
 $(".submit").click(function() {
   displayWeatherData();
 });
+
+const btn = document.querySelector(".btn-toggle");
+let darkModeJSON;
+
+btn.addEventListener("click", function () {
+  document.body.classList.toggle("dark-theme");
+  if (document.body.classList[0] == 'dark-theme') {
+      darkMode = true;
+  }
+  else if (document.body.classList[0] == undefined) {
+    darkMode = false;
+  }
+  darkModeJSON = JSON.stringify(darkMode);
+  console.log(darkModeJSON);
+  localStorage.setItem('darkMode', darkModeJSON);
+});
+

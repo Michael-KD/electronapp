@@ -1,4 +1,4 @@
-const { app, BrowserWindow, remote } = require('electron');
+const { app, BrowserWindow, remote, ipcMain } = require('electron');
 const { totalmem } = require('os');
 const os = require('os-utils');
 const path = require('path');
@@ -14,7 +14,11 @@ const schema = {
   width: {
 		type: 'number',
 		default: 1000 
-	}
+	},
+  darkMode: {
+    type: 'boolean',
+    default: false
+  }
 };
 
 const store = new Store({schema});
@@ -26,7 +30,6 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 let width = store.get('width');
 let height = store.get('height');
-console.log('height: ' + height + ', width: ' + width);  
 const createWindow = () => {
   
   // Create the browser window.
@@ -46,8 +49,8 @@ const createWindow = () => {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 
-
 // store.set('test', 'hi this is a test');
+
 
 setInterval(() => {
   os.cpuUsage(function(v){
@@ -56,14 +59,17 @@ setInterval(() => {
     mainWindow.webContents.send('total-mem', os.totalmem()/1024);
     // console.log(store.get('test'));
     let windowDims = mainWindow.getSize();
-    console.log(windowDims);
+    // console.log(windowDims);
     store.set('height', windowDims[1]);
     store.set('width', windowDims[0]);
     // console.log(app.getPath('appData'));
+    
   });
 },1000);
 
 };
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
