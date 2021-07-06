@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.0",
     "jquery": "^3.6.0",
     "os-utils": "0.0.14",
     "systeminformation": "^5.7.7"

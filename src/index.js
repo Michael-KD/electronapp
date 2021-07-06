@@ -1,21 +1,38 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, remote } = require('electron');
 const { totalmem } = require('os');
 const os = require('os-utils');
 const path = require('path');
 const si = require('systeminformation');
+const Store = require('electron-store');
+// const remote = electron.remote;
 
+const schema = {
+	height: {
+		type: 'number',
+		default: 600 
+	},
+  width: {
+		type: 'number',
+		default: 1000 
+	}
+};
 
+const store = new Store({schema});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
 
+let width = store.get('width');
+let height = store.get('height');
+console.log('height: ' + height + ', width: ' + width);  
 const createWindow = () => {
+  
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: width,
+    height: height,
     
     webPreferences: {
       nodeIntegration: true,
@@ -30,16 +47,20 @@ const createWindow = () => {
   // mainWindow.webContents.openDevTools();
 
 
+// store.set('test', 'hi this is a test');
+
 setInterval(() => {
   os.cpuUsage(function(v){
     mainWindow.webContents.send('cpu', v*100);
     mainWindow.webContents.send('mem', 100 - (os.freememPercentage()*100));
     mainWindow.webContents.send('total-mem', os.totalmem()/1024);
-    // si.cpuTemperature()
-    //   .then(data => console.log(data))
-    //   .catch(error => console.error(error));
+    // console.log(store.get('test'));
+    let windowDims = mainWindow.getSize();
+    console.log(windowDims);
+    store.set('height', windowDims[1]);
+    store.set('width', windowDims[0]);
+    // console.log(app.getPath('appData'));
   });
-    // mainWindow.webContents.send('cputemp', si.cpuTemperature());
 },1000);
 
 };
