@@ -4,7 +4,7 @@ const os = require('os-utils');
 const path = require('path');
 const si = require('systeminformation');
 const Store = require('electron-store');
-// const remote = electron.remote;
+
 
 const schema = {
 	height: {
@@ -36,8 +36,9 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: width,
     height: height,
-    
+    frame: false,
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
       contextIsolation: false,
   }

@@ -122,4 +122,3 @@ btn.addEventListener("click", function () {
   console.log(darkModeJSON);
   localStorage.setItem('darkMode', darkModeJSON);
 });
-
