@@ -7,6 +7,19 @@ body.dark-theme {
   background: #121212;
 }
 
-/* .titlebar {
-  background-color: black;
-} */
+main {
+  background-color: #b4b4b4;
+  
+}
+.contents {
+  background-color: lightblue;
+  
+}
+
+body {
+  display: grid;
+  /* grid-gap: 1em; */
+  grid-template-columns: 3fr 7fr;
+  height: fit-content;
+  width: fit-content;
+}

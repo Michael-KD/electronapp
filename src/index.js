@@ -36,7 +36,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: width,
     height: height,
-    frame: false,
+    // frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -55,6 +55,7 @@ const createWindow = () => {
 
 setInterval(() => {
   os.cpuUsage(function(v){
+    if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.webContents.send('cpu', v*100);
     mainWindow.webContents.send('mem', 100 - (os.freememPercentage()*100));
     mainWindow.webContents.send('total-mem', os.totalmem()/1024);
@@ -64,7 +65,7 @@ setInterval(() => {
     store.set('height', windowDims[1]);
     store.set('width', windowDims[0]);
     // console.log(app.getPath('appData'));
-    
+    }
   });
 },1000);
 
