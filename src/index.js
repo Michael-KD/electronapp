@@ -2,7 +2,6 @@ const { app, BrowserWindow, remote, ipcMain } = require('electron');
 const { totalmem } = require('os');
 const os = require('os-utils');
 const path = require('path');
-const si = require('systeminformation');
 const Store = require('electron-store');
 
 
