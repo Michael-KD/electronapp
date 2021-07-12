@@ -45,8 +45,8 @@ $.ajax({
 //   .then(function(response) {
 //     return response.json();
 //   })
-//   .then(async function(data) {
-//     userip = await data.ip;
+//   .then(function(data) {
+//     userip = data.ip;
 //   })
 
 function getUserIPandCoords() {
