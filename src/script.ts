@@ -41,7 +41,13 @@ $.ajax({
       userip = data.ip;
   }
 });
-
+// fetch('https://api.ipify.org?format=json')
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(async function(data) {
+//     userip = await data.ip;
+//   })
 
 function getUserIPandCoords() {
 var ipurl = "https://ipinfo.io/"+ userip +"/json?token=dc96dbbe2c952c"
