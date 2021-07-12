@@ -1,2 +1,3 @@
 # electronapp
-test 1
+things to fix:
+- margins on canvas

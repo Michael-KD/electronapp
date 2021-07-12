@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "watch": true,
+        "lib": ["DOM", "es6"],
+        "module": "es6"
+        
+    }
+}
