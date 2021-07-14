@@ -3,7 +3,7 @@
   "productName": "CPU Monitor",
   "version": "1.0.4",
   "description": "CPU monitor, weather tracker, and solar system art",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -18,7 +18,7 @@
       "target": [
         "nsis"
       ],
-      "requestedExecutionLevel": "requireAdministrator"
+      "requestedExecutionLevel": "highest"
     },
     "nsis": {
       "uninstallDisplayName": "CPU Monitor",

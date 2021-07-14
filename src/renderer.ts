@@ -1,6 +1,8 @@
 export {}
 
 const electron = require('electron');
+
+
 const remote = electron.remote;
 const ipcRenderer = electron.ipcRenderer;
 ipcRenderer.on('cpu',(event,data) => {
@@ -16,6 +18,21 @@ ipcRenderer.on('total-mem',(event,data) => {
 
 // window.$ = window.jQuery = require('jquery');
 const $ = require('jquery');
+
+
+
+
+
+
+const NOTIFICATION_TITLE = 'Title'
+const NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.'
+const CLICK_MESSAGE = 'Notification clicked'
+
+// new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
+//   .onclick = () => console.log(CLICK_MESSAGE)
+
+
+//switch loaded html page on button click electron
 
 
 var currentWeather: string;
@@ -91,7 +108,7 @@ function displayWeatherData() {
               $(".humidityDisplay").html("Humidity: " + humidity);
               $(".error").html("");
               dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=`+ lat +`&lon=`+ lon +`&exclude=current,minutely,alerts&units=imperial&appid=3bb00f30e525b91a1deb9cbd20254379`;
-              console.log(dailyUrl);
+              // console.log(dailyUrl);
               
               return fetch(dailyUrl)
             }
@@ -102,6 +119,7 @@ function displayWeatherData() {
             return response.json();
         })
         .then(function(dailyData) {
+          
             for (let day of dailyData.daily) {
               //new Date().toISOString().split('T')[0];
               var date = new Date(day.dt*1000).toISOString().split('T')[0];
@@ -127,6 +145,7 @@ btn.addEventListener("click", function () {
   document.body.classList.toggle("dark-theme");
   if (document.body.classList[0] == 'dark-theme') {
       darkMode = true;
+
   }
   else if (document.body.classList[0] == undefined) {
     darkMode = false;
