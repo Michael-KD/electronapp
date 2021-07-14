@@ -12,14 +12,14 @@ let sunSize = 50;
         
 
 function setup() {
-    createCanvas(windowWidth*0.69,windowHeight*0.972)
+    createCanvas(windowWidth*0.70,windowHeight)
     sun = new Body(sunSize, createVector(0,0), createVector(0,0))
 
  
     // Initialise the planets
     for (let i = 0; i < numPlanets; i++) {
         let mass = random(minSize, maxSize)
-        let radius = random(sun.d, min(windowWidth*0.69/2,windowHeight*0.972/2))
+        let radius = random(sun.d, min(windowWidth*0.70/2,windowHeight/2))
         let angle = random(0, TWO_PI)
         let planetPos = createVector(radius * cos(angle), radius * sin(angle))
     
