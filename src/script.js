@@ -106,6 +106,7 @@ setTimeout(displayWeatherData, 300);
 $(".submit").click(function () {
     displayWeatherData();
 });
+//dark mode toggle
 var btn = document.querySelector(".btn-toggle");
 var darkModeJSON;
 btn.addEventListener("click", function () {
@@ -120,7 +121,7 @@ btn.addEventListener("click", function () {
     console.log(darkModeJSON);
     localStorage.setItem('darkMode', darkModeJSON);
 });
+//load new html page
 $(".test-button").click(function () {
     remote.getCurrentWindow().loadFile(__dirname + '/test.html');
-    console.log(remote.__dirname);
 });
