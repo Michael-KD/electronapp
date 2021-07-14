@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var electron = require('electron');
+var remote = electron.remote;
 var ipcRenderer = electron.ipcRenderer;
 ipcRenderer.on('cpu', function (event, data) {
     document.getElementById('cpu').innerHTML = data.toFixed(2);
@@ -40,8 +41,8 @@ $.ajax({
 //   .then(function(response) {
 //     return response.json();
 //   })
-//   .then(async function(data) {
-//     userip = await data.ip;
+//   .then(function(data) {
+//     userip = data.ip;
 //   })
 function getUserIPandCoords() {
     var ipurl = "https://ipinfo.io/" + userip + "/json?token=dc96dbbe2c952c";
@@ -50,7 +51,7 @@ function getUserIPandCoords() {
         return response.json();
     })
         .then(function (data) {
-        console.log(data);
+        // console.log(data);
         cityName = data.city;
         stateCode = data.region;
         coord = data.loc;
@@ -68,7 +69,7 @@ function displayWeatherData() {
         return response.json();
     })
         .then(function (data) {
-        console.log(data);
+        // console.log(data);
         if (data.main) {
             currentWeather = data.main.temp;
             userLocation = data.name;
@@ -118,4 +119,8 @@ btn.addEventListener("click", function () {
     darkModeJSON = JSON.stringify(darkMode);
     console.log(darkModeJSON);
     localStorage.setItem('darkMode', darkModeJSON);
+});
+$(".test-button").click(function () {
+    remote.getCurrentWindow().loadFile(__dirname + '/test.html');
+    console.log(remote.__dirname);
 });

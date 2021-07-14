@@ -1,6 +1,7 @@
 export {}
 
 const electron = require('electron');
+const remote = electron.remote;
 const ipcRenderer = electron.ipcRenderer;
 ipcRenderer.on('cpu',(event,data) => {
     document.getElementById('cpu').innerHTML = data.toFixed(2);
@@ -16,17 +17,18 @@ ipcRenderer.on('total-mem',(event,data) => {
 // window.$ = window.jQuery = require('jquery');
 const $ = require('jquery');
 
-var currentWeather;
+
+var currentWeather: string;
 var userLocation;
-var humidity;
-var cityName;
-var stateCode;
+var humidity: string;
+var cityName: string;
+var stateCode: string;
 var url;
-var lat;
-var lon;
+var lat: string;
+var lon: string;
 var dailyUrl;
-var userip;
-var coord;
+var userip: string;
+var coord: string;
 let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
 
 if (darkMode == true) {
@@ -45,8 +47,8 @@ $.ajax({
 //   .then(function(response) {
 //     return response.json();
 //   })
-//   .then(async function(data) {
-//     userip = await data.ip;
+//   .then(function(data) {
+//     userip = data.ip;
 //   })
 
 function getUserIPandCoords() {
@@ -56,7 +58,7 @@ fetch(ipurl)
     return response.json();
   })
   .then(function(data) {
-    console.log(data);
+    // console.log(data);
     cityName = data.city;
     stateCode = data.region;
     coord = data.loc;
@@ -76,7 +78,7 @@ function displayWeatherData() {
             return response.json();
         })
         .then(function(data) {
-              console.log(data);
+              // console.log(data);
             if (data.main) {
               currentWeather = data.main.temp;
               userLocation = data.name;
@@ -130,4 +132,9 @@ btn.addEventListener("click", function () {
   darkModeJSON = JSON.stringify(darkMode);
   console.log(darkModeJSON);
   localStorage.setItem('darkMode', darkModeJSON);
+});
+
+$(".test-button").click(function() {
+  remote.getCurrentWindow().loadFile(__dirname + '/test.html');
+  console.log(remote.__dirname);
 });
