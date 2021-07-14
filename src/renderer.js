@@ -14,6 +14,12 @@ ipcRenderer.on('total-mem', function (event, data) {
 });
 // window.$ = window.jQuery = require('jquery');
 var $ = require('jquery');
+var NOTIFICATION_TITLE = 'Title';
+var NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.';
+var CLICK_MESSAGE = 'Notification clicked';
+// new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_BODY })
+//   .onclick = () => console.log(CLICK_MESSAGE)
+//switch loaded html page on button click electron
 var currentWeather;
 var userLocation;
 var humidity;
@@ -81,7 +87,7 @@ function displayWeatherData() {
             $(".humidityDisplay").html("Humidity: " + humidity);
             $(".error").html("");
             dailyUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,alerts&units=imperial&appid=3bb00f30e525b91a1deb9cbd20254379";
-            console.log(dailyUrl);
+            // console.log(dailyUrl);
             return fetch(dailyUrl);
         }
         else {
