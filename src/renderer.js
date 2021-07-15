@@ -128,6 +128,6 @@ btn.addEventListener("click", function () {
     localStorage.setItem('darkMode', darkModeJSON);
 });
 //load new html page
-$(".test-button").click(function () {
+$(".test-button").on('click', function () {
     remote.getCurrentWindow().loadFile(__dirname + '/test.html');
 });

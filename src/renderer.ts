@@ -156,6 +156,6 @@ btn.addEventListener("click", function () {
 });
 
 //load new html page
-$(".test-button").click(function() {
+$(".test-button").on('click', function () {
   remote.getCurrentWindow().loadFile(__dirname + '/test.html');
 });

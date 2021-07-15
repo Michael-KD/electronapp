@@ -7,33 +7,32 @@ let angle = 0;
 
 function setup() {
     createCanvas(windowWidth*0.70, windowHeight, WEBGL);
+    cam = createCapture(VIDEO);
+    cam.hide();
 }
 
 
 function draw() {
-
-    pointLight(0, 0, 255, mouseX - width/2, mouseY - height/2, 0);
+    ambientLight(255);
     background(175);
-
-    rectMode(CENTER);
-
-    noStroke();
-    ambientMaterial(0, 0, 255);
-    // translate(mouseX - width/2, mouseY - height/2);
     rotateX(angle);
-    rotateY(angle * 0.3);
-    rotateZ(angle * 1.2);
-    // rect(0, 0, 150, 100);
-    
-    sphere(100);
-    
+    rotateY(angle*0.3);
+    rotateZ(angle*1.2);
+    noStroke();
+    texture(cam);
+    box(200);
 
-    angle += 0.03; // 0.01 radians = 1 degree 
+    angle += 0.03;
 }
 
 
+let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
+
+if (darkMode == true) {
+    document.body.classList.toggle("dark-theme");
+  }
 
 //load new html page
-$(".test-button").click(function() {
+$(".test-button").on('click', function test() {
     remote.getCurrentWindow().loadFile(__dirname + '/index.html');
   });
