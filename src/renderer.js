@@ -14,6 +14,8 @@ ipcRenderer.on('total-mem', function (event, data) {
 });
 // window.$ = window.jQuery = require('jquery');
 var $ = require('jquery');
+var peas = require('@peas_0/test');
+console.log(peas.rgb2hsl(255, 0, 0));
 var NOTIFICATION_TITLE = 'Title';
 var NOTIFICATION_BODY = 'Notification from the Renderer process. Click to log to console.';
 var CLICK_MESSAGE = 'Notification clicked';
