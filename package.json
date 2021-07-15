@@ -57,6 +57,7 @@
     }
   },
   "dependencies": {
+    "@peas_0/test": "^1.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.0",
     "jquery": "^3.6.0",

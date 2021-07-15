@@ -20,8 +20,9 @@ ipcRenderer.on('total-mem',(event,data) => {
 const $ = require('jquery');
 
 
+const peas = require('@peas_0/test');
 
-
+console.log(peas.rgb2hsl(255, 0, 0));
 
 
 const NOTIFICATION_TITLE = 'Title'
