@@ -31,3 +31,79 @@ body {
 main {
   margin: 0;
 }
+
+.top-bar {  
+  grid-column-start: 1;
+  grid-column-end: 3;
+  
+  /* height: 32px; */
+}
+/* .container {
+  display: flex; 
+} */
+.window-buttons {
+  display: flex;
+  float: right;
+}
+.drag-bar {
+  display: flex;
+  float: left;
+  /* background-color: red; */
+  width: -webkit-fill-available;
+  align-items: center;
+  padding-left: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.minimize-button {
+  padding: 8px;
+}
+.maximize-button {
+  padding: 8px;
+}
+
+.close-button {
+  padding: 8px;  
+}
+.container {
+  display: flex;
+}
+.window-button {
+  padding-left: 16px;
+  padding-right: 16px;
+  /* background-color: green; */
+}
+.window-button:hover {
+  animation: window-button-hover 0.2s forwards;
+}
+.close-button:hover {
+  animation: red-window-button-hover 0.2s forwards;
+}
+.close-button:hover polygon {
+  fill: white;
+}
+
+polygon:hover {
+  fill: white;
+}
+
+@keyframes window-button-hover{
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: rgb(211, 211, 211);
+  }  
+}
+
+@keyframes red-window-button-hover {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: rgb(255, 0, 0);
+    
+  }  
+}
