@@ -1,4 +1,5 @@
-const {BrowserWindow} = require('electron').remote
+const {BrowserWindow} = require('electron').remote;
+const ipcRendererForButtons = require('electron').ipcRenderer;
 
 function init() {
     // Minimize task
@@ -21,6 +22,10 @@ function init() {
     document.getElementById("close-button").addEventListener("click", (e) => {
         var window = BrowserWindow.getFocusedWindow();
         window.close();
+    });
+
+    document.getElementById("settings-button").addEventListener("click", (e) => {
+        ipcRendererForButtons.send('show-settings');
     });
 };
 

@@ -1,7 +1,7 @@
 {
-  "name": "test-app",
+  "name": "my-electron-app",
   "productName": "CPU Monitor",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "CPU monitor, weather tracker, and solar system art",
   "main": "src/main.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
-    "build-installer": "electron-builder"
+    "build-installer": "electron-builder",
+    "tsc": "tsc src/main.ts src/renderer.ts"
   },
   "build": {
     "appId": "test-app",
@@ -18,7 +19,7 @@
       "target": [
         "nsis"
       ],
-      "requestedExecutionLevel": "highest"
+      "requestedExecutionLevel": "highestAvailable"
     },
     "nsis": {
       "uninstallDisplayName": "CPU Monitor",

@@ -73,7 +73,6 @@ var createWindow = function () {
         height: height,
         frame: false,
         // icon: path.join(__dirname, 'assets/icon.ico'),
-        // frame: false,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
@@ -82,9 +81,24 @@ var createWindow = function () {
         }
     });
     // and load the index.html of the app.
-    mainWindow.loadFile(path.join(__dirname, 'test.html'));
+    mainWindow.loadFile(path.join(__dirname, 'index.html'));
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
+    ipcMain.on('show-settings', function (event, arg) {
+        var settingsWindow = new BrowserWindow({
+            width: 600,
+            height: 400,
+            parent: mainWindow,
+            frame: false,
+            webPreferences: {
+                // preload: path.join(__dirname, 'preload.js'),
+                nodeIntegration: true,
+                contextIsolation: false,
+                enableRemoteModule: true
+            }
+        });
+        settingsWindow.loadFile(path.join(__dirname, 'settings.html'));
+    });
     setInterval(function () {
         os.cpuUsage(function (v) {
             if (mainWindow && !mainWindow.isDestroyed()) {

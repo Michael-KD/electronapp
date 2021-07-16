@@ -21,6 +21,10 @@ body.dark-theme .contents {
   background-color: darkblue;
 }
 
+body.dark-theme path {
+  stroke: white;
+}
+
 body {
   display: grid;
   /* grid-gap: 1em; */
@@ -41,10 +45,7 @@ main {
 /* .container {
   display: flex; 
 } */
-.window-buttons {
-  display: flex;
-  float: right;
-}
+
 .drag-bar {
   display: flex;
   float: left;
@@ -55,6 +56,8 @@ main {
   user-select: none;
   -webkit-user-select: none;
   -webkit-app-region: drag;
+  height: 34px;
+  width: 100%;
 }
 
 .minimize-button {
@@ -70,16 +73,27 @@ main {
 .container {
   display: flex;
 }
+.window-buttons {
+  display: flex;
+  float: right;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  -webkit-app-region: no-drag;
+  z-index: 99;
+  margin-right: -16px;
+  margin-top: -16px;
+}
+
 .window-button {
   padding-left: 16px;
   padding-right: 16px;
-  /* background-color: green; */
 }
 .window-button:hover {
-  animation: window-button-hover 0.2s forwards;
+  animation: window-button-hover 0.1s forwards;
 }
 .close-button:hover {
-  animation: red-window-button-hover 0.2s forwards;
+  animation: red-window-button-hover 0.1s forwards;
 }
 .close-button:hover polygon {
   fill: white;
@@ -89,12 +103,33 @@ polygon:hover {
   fill: white;
 }
 
+#settings {
+  margin-top: 8px;
+}
+
+.hide {
+  display: none;
+}
+
+.settings-contents {
+  display: block;
+}
+
+
+
+
+
+
+
+
+/* KEYFRAMES */
+
 @keyframes window-button-hover{
   from {
     background-color: white;
   }
   to {
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(223, 223, 223);
   }  
 }
 
