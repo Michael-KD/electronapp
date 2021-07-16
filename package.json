@@ -1,7 +1,7 @@
 {
   "name": "test-app",
   "productName": "CPU Monitor",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "CPU monitor, weather tracker, and solar system art",
   "main": "src/main.js",
   "scripts": {
@@ -18,7 +18,7 @@
       "target": [
         "nsis"
       ],
-      "requestedExecutionLevel": "highest"
+      "requestedExecutionLevel": "highestAvailable"
     },
     "nsis": {
       "uninstallDisplayName": "CPU Monitor",
