@@ -7,11 +7,24 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 <body>
-    <div class="contents">
-        <button class="test-button">Test</button>
+  <div class="top-bar">
+    <div class="container">
+      <div class="drag-bar">Test</div>
+
+      <div class="window-buttons">
+          <div class="minimize-button window-button" id="minimize-button" aria-label="Minimize" tabindex="-1" role="button"><svg aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><rect fill="currentColor" width="10" height="1" x="1" y="6"></rect></svg></div>
+          <div class="maximize-button window-button" id="maximize-button" aria-label="Maximize" tabindex="-1" role="button"><svg aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="currentColor"></rect></svg></div>
+          <div class="close-button window-button" id="close-button" aria-label="Close" tabindex="-1" role="button"><svg  aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><polygon class="svg-close" fill="currentColor" fill-rule="evenodd" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1"></polygon></svg></div>
+      </div>
     </div>
-
-
+  </div>
+  
+  
+  <div class="contents">
+      <button class="test-button">Test</button>
+  </div>
+	  
+    <script src="windowbuttons.js"></script>
     <script src="test.js"></script>
 </body>
 </html>

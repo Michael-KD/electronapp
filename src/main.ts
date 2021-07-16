@@ -36,7 +36,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: width,
     height: height,
-    titleBarStyle: "hidden",
+    frame: false,
     // icon: path.join(__dirname, 'assets/icon.ico'),
     // frame: false,
     webPreferences: {
