@@ -8,10 +8,12 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@codemirror)/\"",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
     "build-installer": "electron-builder",
-    "tsc": "tsc src/main.ts src/renderer.ts"
+    "tsc": "tsc src/main.ts src/renderer.ts",
+    "react": "npx babel src/react.jsx -o src/react.js && npx babel src/react/App.jsx -o src/react/App.js && npx babel src/react/Tabs.jsx -o src/react/Tabs.js"
   },
   "build": {
     "appId": "test-app",
@@ -62,9 +64,15 @@
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.0",
     "jquery": "^3.6.0",
-    "os-utils": "0.0.14"
+    "os-utils": "0.0.14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-tabs": "^3.2.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
     "@electron-forge/cli": "^6.0.0-beta.57",
     "@electron-forge/maker-deb": "^6.0.0-beta.57",
     "@electron-forge/maker-rpm": "^6.0.0-beta.57",

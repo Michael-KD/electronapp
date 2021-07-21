@@ -1,4 +1,4 @@
-const { app, BrowserWindow, remote, ipcMain, Menu } = require('electron');
+const { app, session, BrowserWindow, remote, ipcMain, Menu } = require('electron');
 const { totalmem } = require('os');
 const os = require('os-utils');
 const path = require('path');
@@ -47,7 +47,7 @@ const createWindow = () => {
 });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'react.html'));
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
@@ -209,6 +209,11 @@ const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
 
+// const reactDevToolsPath = 'C:/Users/micha/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi'
+
+// app.whenReady().then(async () => {
+//   await session.defaultSession.loadExtension(reactDevToolsPath)
+// })
 
 
 // This method will be called when Electron has finished

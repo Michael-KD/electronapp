@@ -40,7 +40,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
     return to;
 };
 var _this = this;
-var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, remote = _a.remote, ipcMain = _a.ipcMain, Menu = _a.Menu;
+var _a = require('electron'), app = _a.app, session = _a.session, BrowserWindow = _a.BrowserWindow, remote = _a.remote, ipcMain = _a.ipcMain, Menu = _a.Menu;
 var totalmem = require('os').totalmem;
 var os = require('os-utils');
 var path = require('path');
@@ -81,7 +81,7 @@ var createWindow = function () {
         }
     });
     // and load the index.html of the app.
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+    mainWindow.loadFile(path.join(__dirname, 'react.html'));
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
     ipcMain.on('show-settings', function (event, arg) {
@@ -245,6 +245,10 @@ var template = __spreadArray(__spreadArray([], (isMac ? [{
 ]);
 var menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
+// const reactDevToolsPath = 'C:/Users/micha/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi'
+// app.whenReady().then(async () => {
+//   await session.defaultSession.loadExtension(reactDevToolsPath)
+// })
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
